@@ -12,6 +12,7 @@ livekit = "^0.11.1"
 livekit-plugins-openai = "^0.4.0"
 livekit-plugins-silero = "^0.4.0"
 livekit-agents = "^0.6.0"
+livekit-plugins-deepgram = "^0.4.0"
 
 
 [build-system]

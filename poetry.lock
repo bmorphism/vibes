@@ -667,6 +667,22 @@ pyjwt = ">=2.0.0"
 types-protobuf = ">=4,<5"
 
 [[package]]
+name = "livekit-plugins-deepgram"
+version = "0.4.0"
+description = "Agent Framework plugin for services using DeepGram's API."
+optional = false
+python-versions = ">=3.9.0"
+files = [
+    {file = "livekit_plugins_deepgram-0.4.0-py3-none-any.whl", hash = "sha256:0eb7e6571675d4c9b6ccc537242800dcadfc2540ab6ebbcb9d531d5988325afa"},
+    {file = "livekit_plugins_deepgram-0.4.0.tar.gz", hash = "sha256:bdc2e26f218cb468eb26452d20a56f46a6206efc6977bbc58710f04904d80d02"},
+]
+
+[package.dependencies]
+aiohttp = ">=3.7.4"
+livekit = ">=0.11,<1.0"
+livekit-agents = ">=0.6.0,<0.7.0"
+
+[[package]]
 name = "livekit-plugins-openai"
 version = "0.4.0"
 description = "Agent Framework plugin for services from OpenAI"
@@ -1818,4 +1834,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "411c41717c6e66d484d7a8fc5f6169fa06c07c4ad26d49e9f0ce72f8c615740a"
+content-hash = "02518ee4795f43af442cd980f75dd5d5dcb670dd93884a3e29eb35cca20fd9dd"
