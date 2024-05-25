@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "vibes"
+version = "0.0.0"
+description = "vibe-to-vibe platform"
+authors = ["Barton Rhodes <barton@vibes.lol>"]
+license = "Mozilla License Version 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+livekit = "^0.11.1"
+livekit-plugins-openai = "^0.4.0"
+livekit-plugins-silero = "^0.4.0"
+livekit-agents = "^0.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
