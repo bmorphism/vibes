@@ -1,29 +1,20 @@
 (ns vibes.routes
-  (:require [reitit.ring :as reitit-ring]))
+  (:require [reitit.ring :as reitit-ring]
+            [clojure.string :as str]))
 
-(defn a-handler
+(defn dynamic-handler
   [system request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body "a vibe is a vibe is a vibe"})
-
-(defn gm-handler
-  [system request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body "gm"})
-
-(defn gn-handler
-  [system request]
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body "gn"})
+  (let [server-name (:server-name request)
+        subdomain   (first (str/split server-name #"\."))
+        path        (str/replace (:uri request) #"^/" "")
+        response    (str subdomain " world on " path)]
+    {:status 200
+     :headers {"Content-Type" "text/html"}
+     :body response}))
 
 (defn routes
   [system]
-  [["/"   {:get {:handler (partial #'a-handler system)}}]
-   ["/gm" {:get {:handler (partial #'gm-handler system)}}]
-   ["/gn" {:get {:handler (partial #'gn-handler system)}}]])
+  [["/*path" {:get {:handler (partial #'dynamic-handler system)}}]])
 
 (defn not-found-handler
   [_request]
@@ -34,7 +25,6 @@
 (defn root-handler
   [system request]
   (let [handler (reitit-ring/ring-handler
-                 (reitit-ring/router
-                  (routes system))
+                 (reitit-ring/router (routes system))
                  #'not-found-handler)]
     (handler request)))
